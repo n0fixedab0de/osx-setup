@@ -272,9 +272,6 @@ brew 'inetutils'
 # Postman: a complete API Development Environment.
 cask 'postman'
 
-# FileMerge
-brew "fmdiff"
-
 # Insomnia: REST client for API testing.
 # cask 'insomnia'
 
@@ -540,4 +537,7 @@ brew "mas"
 mas "Hidden Bar", id: 1452453066
 mas "HP Easy Scan", id: 967004861
 mas "XCode", id: 497799835
+# FileMerge, must come after xcode
+brew "fmdiff"
+
 cask "powershell"
