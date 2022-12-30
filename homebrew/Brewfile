@@ -541,3 +541,4 @@ mas "XCode", id: 497799835
 brew "fmdiff"
 
 cask "powershell"
+cask "google-drive"
