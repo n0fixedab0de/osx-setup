@@ -1,0 +1,543 @@
+##
+# Brewfile based on https://github.com/joelparkerhenderson/brewfile/blob/main/Brewfile
+#
+# This Brewfile is for our teams and their developer laptops.
+# This is a work in progress. Use at your own discretion.
+#
+#
+# ## Introduction
+#
+# This file installs many apps, including office suites, multimedia suites,
+# programming langauges, unix utilities, sysadmin tools, and fonts.
+#
+# This file is organized in meaningful sections because we want to
+# make it easy for you to pick and choose sections that you want.
+#
+# There are many TODO items in this file. If you want, help us
+# describe these and organize them into the relevant sections.
+#
+# The file is generally organized in these sections:
+#
+#   * Software that's fine for everyone,
+#     e.g., browsers, players, editors.
+#
+#   * Software that's especially suitable for programmers,
+#     e.g., compilers, databases, languages, servers, etc.
+#
+#   * Paid software that requires a license or purchase,
+#     e.g. JetBrains, OmniGroup, Paw, etc.
+#
+#   * Libraries: operating system libraries e.g. lib*.
+#
+#   * TODO: a section of uncategorized software.
+#
+#   * Fonts
+#
+#
+# ### About Brewfile capabilities
+#
+# To learn about Brewfile capabilties, please see:
+#
+#   * http://brew.sh/
+#   * http://homebrew-file.readthedocs.io/
+#   * https://github.com/Homebrew/homebrew-bundle
+#
+#
+# ### Usage
+#
+# To use this Brewfile via `brew bundle`:
+#
+#     $ brew bundle
+#
+# To use this Brewfile via `brew-file`, which has more capabilties than bundle:
+#
+#     $ brew install rcmdnk/file/brew-file
+#     $ brew file init
+#     Do you want to set a repository (y)? ((n) for local Brewfile). [y/n]: y
+#     Set repository, "non" for local Brewfile,
+#     <user>/<repo> for github repository,
+#     or full path for the repository: joelparkerhenderson/brewfile
+#
+#
+# ### Mac tools vs. GNU tools
+#
+# We generaly prefer GNU tools over preinstalled Mac software tools.
+# For example, we prefer the GNU `sed` command vs. macOS `sed` command.
+#
+# However, we have seen this cause conflicts with macOS software that
+# isn't aware of GNU; therefore we install the dupes in parallel.
+#
+# See:
+#
+#   * https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
+#
+#
+##
+
+##
+# Preflight
+##
+
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "homebrew/cask"
+tap "warrensbox/tap"
+tap "azure/bicep"
+tap "isen-ng/dotnet-sdk-versions"
+tap "azure/functions"
+
+###########################################################################
+#
+# SOFTWARE THAT IS TYPICALLY FINE FOR EVERYONE
+#
+###########################################################################
+
+
+##
+# Browsers
+#
+# We prefer Firefox because it's open source.
+##
+
+# Firefox web browser
+cask 'firefox'
+
+# Firefox developer edition, which features programming tools.
+#cask 'firefox-developer-edition'
+
+# Google Chrome web browser
+cask 'google-chrome'
+
+# Opera web browser
+#cask 'opera'
+
+
+##
+# Chat
+#
+# We favor Riot.im because it is free open source,
+# and also works closely with Mozilla foundation.
+##
+
+# Discord chat
+cask 'discord'
+
+# Slack chat client
+cask 'slack'
+
+cask 'whatsapp'
+
+##
+# Terminals
+#
+# We typically use `tmux`, `tmate`,
+# and sometimes fall back on `screen`.
+##
+
+# iTerm is our favorite terminal app.
+cask 'iterm2'
+
+# ngrok opens a secure tunnel to localhost
+cask 'ngrok'
+
+
+##
+# Passwords/Secrets
+#
+# We use password-manager applications with many of our projects.
+# If you don't use these, feel free to delete them.
+##
+
+# Keybase.io digital signature manager
+#cask 'keybase'
+
+# Authy password manager, which is cross-platform
+#cask 'authy'
+
+# LastPass is a password manager
+# cask 'lastpass'
+cask '1password'
+
+brew "vault-cli"
+
+
+##
+# Editors
+#
+# We typically use command line editors (vim, emacs, etc.)
+# and sometimes use GUI editors (atom, sublime, etc.)
+##
+
+# Atom editor by GitHub
+#cask 'atom'
+
+# Sublime text editor
+cask 'sublime-text'
+
+
+##
+# Office software
+##
+
+# LibreOffice is a large suite of software for documents, spreadsheets, diagrams.
+#cask 'libreoffice'
+
+# Microsof Office is a large suite of software for documents, spreadsheets, diagrams.
+#cask "microsoft-office"
+
+cask "microsoft-teams"
+
+##
+# Version control
+#
+# We prefer `git` version control. We also work on a wide
+# range of systems, so we also sometimes use CVS, HG, and SVN.
+##
+
+# Git is a free and open source distributed version control system.
+brew 'git'
+
+# Git Large File Storage
+#brew 'git-lfs'
+
+# Git extensions to provide high-level operations for Git Flow branching model.
+#brew 'git-flow'
+
+# SourceTree graphic client for git
+cask 'sourcetree'
+
+
+##
+# Text search
+#
+# We prefer ripgrep because it is very fast and very safe.
+##
+
+# jq is a lightweight and flexible command-line JSON processor.
+brew 'jq'
+
+# yq is a lightweight and flexible command-line YAML processor.
+brew 'yq'
+
+
+## Multimedia players
+
+# VLC media player
+#cask 'vlc'
+
+
+## ebooks
+
+# Kindle book reader by Amazon
+cask 'kindle'
+
+
+##
+# Server-Related
+##
+
+# Docker software containers to help distribute applications.
+# brew 'docker'
+
+
+##
+# Brew cask enables installing typical Mac OS X applications.
+# For example, these formula s may download a `*.dmg` file,
+# then unpack it into the correct `/Applications` directory,
+# and possibly configure the app with typical settings.
+##
+
+cask 'caffeine'
+
+# Skype calling with video and phone calls.
+cask 'skype'
+
+# Spotify music player
+cask 'spotify'
+
+# Todo app
+cask 'todoist'
+
+# Video calls
+cask "zoom"
+
+
+##
+# Clients
+##
+
+# GNU inetutils contains telnet, ftp, etc.
+brew 'inetutils'
+
+# Postman: a complete API Development Environment.
+cask 'postman'
+
+# FileMerge
+brew "fmdiff"
+
+# Insomnia: REST client for API testing.
+# cask 'insomnia'
+
+# Grand Perspective
+cask "grandperspective"
+
+#  NordVPN
+cask "nordvpn"
+
+# Steam
+cask "steam"
+
+cask "toggl-track"
+
+##
+# Networking
+##
+
+# Netcat is a networking utility for the TCP/IP protocol.
+# brew 'netcat'
+
+# prettyping: ping with colorful output and progress bars
+# brew 'prettyping'
+
+# mtr: a better tool for ping and traceroute
+# brew 'mtr'
+
+# Wireshark-chmodbft enables regular users to capture network packets.
+# Use this for typical macOS behaviors; use this insted of 'wireshark'.
+cask 'wireshark'
+
+# Charles web debugging proxy
+# cask 'charles'
+
+# Siege is an http load testing and benchmarking utility.
+# brew 'siege'
+
+# nmap network mapper is a security scanner
+brew 'nmap'
+
+# Certbot: automatically enable HTTPS on your website via Let's Encrypt
+# brew 'certbot'
+
+
+##
+# Database managers
+##
+
+# DBeaver
+cask "dbeaver-community"
+
+
+##
+# Data analytics
+##
+
+# Elasticsearch is a real-time, distributed storage, search, and analytics engine.
+# brew 'elasticsearch'
+
+# Logstash helps parse, enrich, transform, and buffer data from a variety of sources.
+# brew 'logstash'
+
+# Kibana is an open source analytics and visualization platform designed to work with Elasticsearch.
+# brew 'kibana'
+
+
+
+##
+# Programming languages
+#
+# This section installs many programming languages:
+# Clojure, Elixir, Erlang, Go, Haskell, Java, JavaScript,
+# Perl, Python, R, Ruby, Scala, Swift, and tooling.
+##
+
+## Rust
+
+# Rust programming language
+# brew install rustup
+
+brew "jenv"
+
+brew "nvm"
+
+brew "yarn"
+
+brew "pyenv"
+
+# mono not supported on apple silicon. Use 'dotnet nuget' instead
+# brew "mono"
+# brew "nuget"
+
+## Testing
+
+# Selenium standalone server
+# brew 'selenium-server-standalone'
+
+# Selenium webdriver for Chrome browser
+# brew 'chromedriver'
+
+# Selenimum webdriver for Firefox browser
+# brew 'geckodriver'
+
+
+#  K6 load testing
+brew "k6"
+
+
+##
+# Platforms
+##
+
+# Azure by Microsoft
+brew 'azure-cli'
+
+brew "azure-functions-core-tools@4"
+
+cask "microsoft-azure-storage-explorer"
+
+cask "microsoft-remote-desktop"
+
+# Amazon Web Services (AWS) Command Line Interface (CLI)
+brew 'awscli'
+
+# AWS command line tools
+# tap 'wallix/awless'
+# brew 'awless'
+
+# Google Cloud Platform (GCP)
+cask "google-cloud-sdk"
+
+# Heroku app hosting
+# brew 'heroku'
+
+
+## Virtual machines
+
+# VirtualBox creates and configures portable development environments, by Oracle.
+# cask 'virtualbox'
+
+# VMWare Fusion virutal machines
+# cask 'vmware-fusion'
+
+# Vagrant lightweight, reproducible, portable development environments
+# cask 'vagrant'
+# cask 'vagrant-manager'
+
+# Parallels
+# cask parallels
+
+
+## Provisioning
+
+# Terraform common configuration to launch infrastructure.
+brew "warrensbox/tap/tfswitch"
+brew "checkov"
+brew "infracost"
+brew "tflint"
+brew "tfsec"
+brew "terraform-docs"
+
+# Bicep
+brew "bicep"
+
+## Configuration management
+
+# Ansible is a simple way to automate apps and IT infrastructure.
+# brew 'ansible'
+
+## Containeriztion
+
+# Docker assembles applications from components.
+# cask 'docker'
+
+
+## Orchestration
+
+# Kubernetes Solo cluster for macOS.
+# cask 'kube-solo'
+
+# Kubernetes command-line tool to run commands against Kubernetes clusters.
+brew "kubernetes-cli"
+
+# Run a single-node Kubernetes cluster in a virtual machine on your personal computer.
+# brew 'minikube'
+
+# Helm
+brew "helm"
+
+
+
+###########################################################################
+#
+# PAID SOFTWARE
+#
+###########################################################################
+
+##
+# This section installs software that costs money.
+# In general, we aim to install free trial versions.
+#
+# We pay for licenses for this software for our teammates
+# when we work on projects that use this software.
+#
+# You may want to customize this section by deleting any items that
+# you don't want to use or purchase, because this will save disk space.
+##
+
+
+# Microsoft
+
+# Visual Studio Code
+cask "visual-studio-code"
+
+
+
+##
+# JetBrains
+#
+# JetBrains is paid software suitable for professional programmers,
+# such as Integrated Development Environments (IDEs) for popular
+# programming languages, including Java, Python, Ruby, PHP, etc.
+##
+
+# AppCode Swift IDE
+# cask 'appcode'
+
+# CLion C/C++ IDE
+# cask 'clion'
+
+# DataGrip SQL IDE
+cask 'datagrip'
+
+cask 'dotnet-sdk'
+
+#cask "dotnet-sdk3-1-400"
+#cask 'dotnet-sdk6-0-300'
+
+# IntelliJ Java IDE
+cask 'intellij-idea'
+
+cask 'rider'
+
+# PhpStorm PHP IDE
+# cask 'phpstorm'
+
+# PyCharm Python IDE
+cask 'pycharm'
+
+# RubyMine Ruby IDE
+# cask 'rubymine'
+
+# WebStorm IDE
+cask 'webstorm'
+
+
+
+##
+#  Miscellaneous
+##
+
+brew "mas"
+mas "Hidden Bar", id: 1452453066
+mas "HP Easy Scan", id: 967004861
+mas "XCode", id: 497799835
+cask "powershell"
