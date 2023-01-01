@@ -111,6 +111,7 @@ cask 'google-chrome'
 # Opera web browser
 #cask 'opera'
 
+cask 'brave-browser'
 
 ##
 # Chat
