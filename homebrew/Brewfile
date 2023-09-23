@@ -528,7 +528,7 @@ cask 'pycharm'
 # WebStorm IDE
 cask 'webstorm'
 
-
+cask 'fleet'
 
 ##
 #  Miscellaneous
@@ -537,6 +537,7 @@ cask 'webstorm'
 brew "mas"
 mas "Hidden Bar", id: 1452453066
 mas "HP Easy Scan", id: 967004861
+mas "HP Smart for Desktop", id: 1474276998
 mas "XCode", id: 497799835
 mas "Speedtest by Ookla", id: 1153157709
 # FileMerge, must come after xcode
