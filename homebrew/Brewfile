@@ -318,12 +318,19 @@ brew 'nmap'
 
 
 ##
+# Databases
+## 
+brew 'postgresql'
+
+
+##
 # Database managers
 ##
 
 # DBeaver
 cask "dbeaver-community"
 
+cask "pgadmin4"
 
 ##
 # Data analytics
@@ -509,7 +516,7 @@ cask 'datagrip'
 cask 'dotnet-sdk'
 
 #cask "dotnet-sdk3-1-400"
-#cask 'dotnet-sdk6-0-300'
+cask 'dotnet-sdk6-0-300'
 
 # IntelliJ Java IDE
 cask 'intellij-idea'
