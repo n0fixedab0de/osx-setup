@@ -282,6 +282,8 @@ cask "grandperspective"
 #  NordVPN
 cask "nordvpn"
 
+# cask "openconnect"
+
 # Steam
 cask "steam"
 
@@ -452,7 +454,7 @@ brew "bicep"
 ## Containeriztion
 
 # Docker assembles applications from components.
-# cask 'docker'
+cask 'docker'
 
 
 ## Orchestration
