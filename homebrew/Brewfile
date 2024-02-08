@@ -490,6 +490,8 @@ brew "helm"
 # you don't want to use or purchase, because this will save disk space.
 ##
 
+cask "daisydisk"
+cask "grandperspective"
 
 # Microsoft
 
