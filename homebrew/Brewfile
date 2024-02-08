@@ -79,8 +79,8 @@
 ##
 
 tap "homebrew/bundle"
-tap "homebrew/core"
-tap "homebrew/cask"
+#tap "homebrew/core"
+#tap "homebrew/cask"
 tap "warrensbox/tap"
 tap "azure/bicep"
 tap "isen-ng/dotnet-sdk-versions"
