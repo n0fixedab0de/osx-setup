@@ -85,6 +85,7 @@ tap "warrensbox/tap"
 tap "azure/bicep"
 tap "isen-ng/dotnet-sdk-versions"
 tap "azure/functions"
+tap "auth0/auth0-cli"
 
 ###########################################################################
 #
@@ -108,6 +109,8 @@ cask 'firefox'
 # Google Chrome web browser
 cask 'google-chrome'
 
+cask 'arc'
+
 # Opera web browser
 #cask 'opera'
 
@@ -127,6 +130,10 @@ cask 'discord'
 cask 'slack'
 
 cask 'whatsapp'
+
+cask 'telegram'
+
+cask 'signal'
 
 ##
 # Terminals
@@ -198,6 +205,10 @@ cask "microsoft-teams"
 # Git is a free and open source distributed version control system.
 brew 'git'
 
+brew 'git-lfs'
+
+brew 'gh'
+
 # Git Large File Storage
 #brew 'git-lfs'
 
@@ -224,8 +235,10 @@ brew 'yq'
 ## Multimedia players
 
 # VLC media player
-#cask 'vlc'
+cask 'vlc'
 
+brew 'handbrake'
+cask 'handbrake'
 
 ## ebooks
 
@@ -258,6 +271,8 @@ cask 'spotify'
 
 # Todo app
 cask 'todoist'
+
+cask 'obsidian'
 
 # Video calls
 cask "zoom"
@@ -316,13 +331,17 @@ cask 'wireshark'
 brew 'nmap'
 
 # Certbot: automatically enable HTTPS on your website via Let's Encrypt
-# brew 'certbot'
+brew 'certbot'
+
+brew 'openssl'
 
 
 ##
 # Databases
 ## 
 brew 'postgresql'
+
+brew 'redis'
 
 
 ##
@@ -333,6 +352,8 @@ brew 'postgresql'
 cask "dbeaver-community"
 
 cask "pgadmin4"
+
+cask "tableplus"
 
 ##
 # Data analytics
@@ -406,6 +427,8 @@ cask "microsoft-remote-desktop"
 # Amazon Web Services (AWS) Command Line Interface (CLI)
 brew 'awscli'
 
+brew 'auth0'
+
 # AWS command line tools
 # tap 'wallix/awless'
 # brew 'awless'
@@ -436,11 +459,12 @@ cask "google-cloud-sdk"
 ## Provisioning
 
 # Terraform common configuration to launch infrastructure.
-brew "warrensbox/tap/tfswitch"
+# brew "warrensbox/tap/tfswitch"
 brew "checkov"
 brew "infracost"
 brew "tflint"
 brew "tfsec"
+brew 'tfenv'
 brew "terraform-docs"
 
 # Bicep
@@ -517,6 +541,8 @@ cask "visual-studio-code"
 # DataGrip SQL IDE
 cask 'datagrip'
 
+# cask 'dotnet'
+
 cask 'dotnet-sdk'
 
 #cask "dotnet-sdk3-1-400"
@@ -548,7 +574,7 @@ cask 'fleet'
 brew "mas"
 mas "Hidden Bar", id: 1452453066
 mas "HP Easy Scan", id: 967004861
-mas "HP Smart for Desktop", id: 1474276998
+# mas "HP Smart for Desktop", id: 1474276998
 mas "XCode", id: 497799835
 mas "Speedtest by Ookla", id: 1153157709
 # FileMerge, must come after xcode
@@ -556,3 +582,12 @@ brew "fmdiff"
 
 cask "powershell"
 cask "google-drive"
+cask "dropbox"
+# cask "stremio"
+
+
+
+# mas "Velja", id: 1607635845
+
+
+cask "keep"
