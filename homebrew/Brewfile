@@ -168,6 +168,7 @@ cask '1password'
 
 brew "vault-cli"
 
+brew "ffmpeg"
 
 ##
 # Editors
@@ -236,9 +237,11 @@ brew 'yq'
 
 # VLC media player
 cask 'vlc'
+brew 'mpv'
 
 brew 'handbrake'
 cask 'handbrake'
+# cask 'transmission'
 
 ## ebooks
 
