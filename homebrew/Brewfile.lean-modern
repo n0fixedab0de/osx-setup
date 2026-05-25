@@ -31,12 +31,14 @@
 #   18. Miscellaneous applications, utilities
 #   19. VS Code extensions / DevOps, cloud, containers & IaC
 #   20. VS Code extensions / Languages, quality & productivity
-#   21. Disabled backlog
+#   21. Legacy / disabled backlog
 #
 # Lifecycle labels:
+#   Required to rebuild the dev workstation.
+#   [Optional]  Useful or personal, but not required for core dev work.
 #   [Legacy]    Kept for old projects or historical reference.
 #   [Review]    Possible duplicate, pin, renamed item, or unclear ownership.
-#   [Unknown]   Unknown and unsure what it will affect. Keep if it doesn't cause issues, remove if it does.
+#   [Disabled]  Commented out and not currently installed by this Brewfile.
 #
 # Usage:
 #   brew bundle check --file homebrew/Brewfile --verbose
@@ -57,6 +59,12 @@ tap "azure/bicep"
 
 # Azure Functions tap.
 tap "azure/functions"
+
+# Homebrew Bundle support.
+tap "homebrew/bundle"
+
+# Homebrew services support.
+tap "homebrew/services"
 
 # [Legacy] Specific .NET SDK versions tap. Enable only for old pinned SDKs.
 # tap "isen-ng/dotnet-sdk-versions"
@@ -90,13 +98,13 @@ brew "inetutils"
 # Terminal emulator.
 cask "iterm2"
 
-# Keep Mac awake during long-running work.
+# [Optional] Keep Mac awake during long-running work.
 cask "caffeine"
 
-# Disk usage visualiser.
+# [Optional] Disk usage visualiser.
 cask "grandperspective"
 
-# Disk space visualiser
+# [Optional] Disk space visualiser
 # cask "daisydisk"
 
 # Mac App Store command-line interface
@@ -119,10 +127,10 @@ brew "gh"
 # Framework for managing and maintaining multi-language pre-commit hooks.
 # brew "pre-commit"
 
-# Git large file support. Enable if repositories require LFS.
+# [Optional] Git large file support. Enable if repositories require LFS.
 # brew "git-lfs"
 
-# Graphical Git client.
+# [Optional] Graphical Git client.
 cask "sourcetree"
 
 
@@ -133,7 +141,7 @@ cask "sourcetree"
 # Port scanning and network discovery.
 brew "nmap"
 
-# Tool to obtain certs from Let's Encrypt and auto-enable HTTPS
+# [Optional] Tool to obtain certs from Let's Encrypt and auto-enable HTTPS
 # brew "certbot"
 
 # Ping + traceroute style diagnostics.
@@ -157,10 +165,10 @@ brew "tcpdump"
 # Network protocol analyzer GUI.
 cask "wireshark-app"
 
-# Local tunnels for webhook and callback testing.
+# [Optional] Local tunnels for webhook and callback testing.
 cask "ngrok"
 
-# Web debugging proxy.
+# [Optional] Web debugging proxy.
 # cask "charles"
 
 
@@ -187,22 +195,22 @@ brew "jenv"
 cask "dotnet-sdk"
 
 # Corepack manages Yarn / pnpm versions per Node project.
-# npm "corepack"
+npm "corepack"
 
 # TypeScript compiler
-# npm "typescript"
+npm "typescript"
 
 # TypeScript execution engine
-# npm "ts-node"
+npm "ts-node"
 
 # Node.js type definitions
-# npm "@types/node"
+npm "@types/node"
 
 # YAML parser / CLI tooling
-# npm "yaml"
+npm "yaml"
 
 # YAML sorting utility
-# npm "yaml-sort"
+npm "yaml-sort"
 
 # [Legacy] Use Corepack instead unless a specific legacy global Yarn is required.
 # brew "yarn"
@@ -215,6 +223,12 @@ cask "dotnet-sdk"
 
 # [Legacy] Old project support only.
 # brew "python-setuptools"
+
+# [Unknown] Core application library for C
+brew "glib"
+
+# [Unknown] OpenType text shaping engine
+brew "harfbuzz"
 
 
 ###########################################################################
@@ -230,7 +244,7 @@ brew "azure/bicep/bicep"
 # Azure Functions Core Tools v4.
 brew "azure/functions/azure-functions-core-tools@4"
 
-# Azure Storage Explorer GUI.
+# [Optional] Azure Storage Explorer GUI.
 # cask "microsoft-azure-storage-explorer"
 
 # [PowerShell module, not Homebrew]
@@ -246,35 +260,35 @@ brew "azure/functions/azure-functions-core-tools@4"
 brew "awscli"
 
 # AWS CDK managed by npm/nvm. Keep out of Homebrew formulae to avoid split ownership.
-# npm "aws-cdk"
+npm "aws-cdk"
 
 
 ###########################################################################
 # 8. Terraform, Terragrunt & IaC quality
 ###########################################################################
 
-# Terraform version manager.
+# Terraform version manager. (*Terraform)
 brew "tfenv"
 
-# Terragrunt wrapper for Terraform/OpenTofu workflows.
+# Terragrunt wrapper for Terraform/OpenTofu workflows. (*Terraform)
 brew "terragrunt"
 
-# Terraform linter.
+# Terraform linter. (*Terraform)
 brew "tflint"
 
-# Terraform module documentation generator.
+# Terraform module documentation generator. (*Terraform)
 brew "terraform-docs"
 
-# IaC static analysis and policy checks.
+# IaC static analysis and policy checks. (*Terraform)
 brew "checkov"
 
-# Cost estimates for Terraform, Terragrunt and CloudFormation.
+# Cost estimates for Terraform, Terragrunt and CloudFormation. (*Terraform)
 brew "infracost"
 
-# OpenTofu CLI. Enable if you actively work with OpenTofu repos.
+# [Optional] OpenTofu CLI. Enable if you actively work with OpenTofu repos. (*Terraform)
 # brew "opentofu"
 
-# tfsec overlaps with Checkov and Trivy. Keep only if repos/pipelines expect it.
+# [Review] tfsec overlaps with Checkov and Trivy. Keep only if repos/pipelines expect it. (*Terraform)
 # brew "tfsec"
 
 
@@ -300,7 +314,7 @@ brew "trivy"
 # Explore Docker image layers.
 brew "dive"
 
-# Docker Compose v2 plugin. Docker Desktop usually includes compose.
+# [Optional] Docker Compose v2 plugin. Docker Desktop usually includes compose.
 # brew "docker-compose"
 
 
@@ -323,10 +337,10 @@ brew "eza"
 # JSON/YAML/TOML-aware structural search and rewrite.
 brew "ast-grep"
 
-# Bundle repository content for LLM review.
+# [Optional] Bundle repository content for LLM review.
 # npm "repomix"
 
-# AI pair-programming CLI. Prefer isolated install with pipx or uv tool.
+# [Optional] AI pair-programming CLI. Prefer isolated install with pipx or uv tool.
 # Example:
 #   uv tool install aider-chat
 
@@ -347,7 +361,7 @@ cask "sublime-text"
 # API development client.
 cask "postman"
 
-# Personal knowledge base / notes.
+# Personal knowledge base / notes. (*Organisational)
 cask "obsidian"
 
 
@@ -355,19 +369,19 @@ cask "obsidian"
 # 12. JetBrains IDEs
 ###########################################################################
 
-# Java / general IDE.
+# [Optional] [JetBrains] Java / general IDE.
 cask "intellij-idea"
 
-# .NET IDE.
+# [Optional] [JetBrains] .NET IDE.
 cask "rider"
 
-# Python IDE.
+# [Optional] [JetBrains] Python IDE.
 cask "pycharm"
 
-# JavaScript / TypeScript IDE.
-# cask "webstorm"
+# [Optional] [JetBrains] JavaScript / TypeScript IDE.
+cask "webstorm"
 
-# Database IDE. Prefer this OR TablePlus unless both earn their keep.
+# [Optional] [JetBrains] Database IDE. Prefer this OR TablePlus unless both earn their keep.
 # cask "datagrip"
 
 
@@ -375,19 +389,19 @@ cask "pycharm"
 # 13. Database clients & local services
 ###########################################################################
 
-# Native GUI for relational databases.
+# [Optional] Native GUI for relational databases.
 cask "tableplus"
 
-# [Legacy] Object-relational database system. Prefer containers unless local native DB is required.
+# [Optional] Object-relational database system. Prefer containers unless local native DB is required.
 # brew "postgresql@18"
 
-# Redis. Prefer containers unless local native service is required.
+# [Optional] Redis. Prefer containers unless local native service is required.
 # brew "redis"
 
-# Universal database tool.
+# [Optional] Universal database tool.
 # cask "dbeaver-community"
 
-# PostgreSQL admin GUI.
+# [Optional] PostgreSQL admin GUI.
 # cask "pgadmin4"
 
 
@@ -395,19 +409,19 @@ cask "tableplus"
 # 14. Browsers
 ###########################################################################
 
-# Google Chrome
+# Everyday browser.
 cask "google-chrome"
 
-# Firefox
+# Separate browser profile for privacy / secure anonymous use.
 cask "firefox"
 
-# Chromium-based alternative browser.
+# [Optional] Chromium-based alternative browser.
 # cask "arc"
 
-# Privacy-focused Chromium browser.
+# [Optional] Privacy-focused Chromium browser.
 # cask "brave-browser"
 
-# Firefox developer edition.
+# [Optional] Firefox developer edition.
 # cask "firefox-developer-edition"
 
 
@@ -424,16 +438,16 @@ cask "discord"
 # Microsoft collaboration client.
 cask "microsoft-teams"
 
-# Video meetings.
+# [Optional] Video meetings.
 cask "zoom"
 
-# Secure messaging.
+# [Optional] Secure messaging.
 cask "signal"
 
-# Native desktop client for WhatsApp
+# [Optional] Native desktop client for WhatsApp
 cask "whatsapp"
 
-# Messaging app with a focus on speed and security
+# [Optional] Messaging app with a focus on speed and security
 cask "telegram"
 
 
@@ -444,31 +458,31 @@ cask "telegram"
 # Password manager.
 cask "1password"
 
-# VPN client.
+# [Optional] VPN client.
 cask "nordvpn"
 
-# Google Drive sync client.
+# [Optional] Google Drive sync client.
 cask "google-drive"
 
-# Dropbox sync client.
+# [Optional] Dropbox sync client.
 # cask "dropbox"
 
-# To-do list.
+# [Optional] To-do list.
 cask "todoist-app"
 
-# Browser picker.
+# [Optional] Browser picker.
 mas "Velja", id: 1607635845
 
-# Menu bar window management.
+# [Optional] Menu bar window management.
 mas "Hidden Bar", id: 1452453066
 
-# Network speed testing app.
+# [Optional] Network speed testing app.
 mas "Speedtest", id: 1153157709
 
-# HP printer/scanner utilities.
+# [Optional] HP printer/scanner utilities.
 mas "HP", id: 1474276998
 
-# HP scanner application
+# [Optional] HP scanner application
 mas "HP Easy Scan", id: 967004861
 
 
@@ -476,34 +490,34 @@ mas "HP Easy Scan", id: 967004861
 # 17. Media & personal apps
 ###########################################################################
 
-# Multimedia player.
+# [Optional] Multimedia player.
 cask "vlc"
 
-# Media player CLI/app.
+# [Optional] Media player CLI/app.
 brew "mpv"
 
-# Audio/video codec Swiss-army knife. Keep if scripts use it.
+# [Optional] Audio/video codec Swiss-army knife. Keep if scripts use it.
 brew "ffmpeg"
 
-# Music streaming.
+# [Optional] Music streaming.
 cask "spotify"
 
-# eBook reader.
+# [Optional] eBook reader.
 cask "kindle"
 
-# Video streaming app.
+# [Optional] Video streaming app.
 mas "Prime Video", id: 545519333
 
-# Games platform.
+# [Optional] Games platform.
 cask "steam"
 
-# Video transcoder GUI.
+# [Optional] Video transcoder GUI.
 # cask "handbrake-app"
 
-# BitTorrent client
+# [Disabled] BitTorrent client
 # cask "transmission"
 
-# Media centre / streaming app
+# [Disabled] Media centre / streaming app
 # cask "stremio"
 
 
@@ -511,10 +525,10 @@ cask "steam"
 # 18. Miscellaneous applications, utilities
 ###########################################################################
 
-# Provides updates to various Microsoft products
+# [Optional] Provides updates to various Microsoft products
 cask "microsoft-auto-update"
 
-# Auth0 CLI. Installs the auth0 command. May not be needed as currently deploying with a0 cli.
+# Auth0 CLI. Installs the a0 command.
 brew "auth0/auth0-cli/auth0"
 
 
@@ -536,7 +550,7 @@ vscode "ms-azure-devops.azure-pipelines"
 vscode "docker.docker"
 vscode "azurite.azurite"
 
-# Azure AI / Copilot-related extensions. Keep if useful in your workflow.
+# [Optional] Azure AI / Copilot-related extensions. Keep if useful in your workflow.
 vscode "ms-azuretools.vscode-azure-github-copilot"
 vscode "ms-azuretools.vscode-azure-mcp-server"
 
@@ -564,42 +578,42 @@ vscode "yzhang.markdown-all-in-one"
 vscode "mechatroner.rainbow-csv"
 vscode "vscode-icons-team.vscode-icons"
 
-# GraphQL support.
+# [Optional] GraphQL support.
 vscode "graphql.vscode-graphql"
 vscode "graphql.vscode-graphql-syntax"
 
-# Kusto language support.
+# [Optional] Kusto language support.
 vscode "rosshamish.kuskus-kusto-language-server"
 
-# Convenience extensions.
+# [Optional] Convenience extensions.
 vscode "formulahendry.code-runner"
 vscode "fvclaus.sort-json-array"
 vscode "ms-vsliveshare.vsliveshare"
 
 
 ###########################################################################
-# 21. Disabled backlog
+# 21. Legacy / disabled backlog
 ###########################################################################
 
 ##
 # ELK stack
 ## 
 
-# Elasticsearch is a real-time, distributed storage, search, and analytics engine.
+# [Disabled] Elasticsearch is a real-time, distributed storage, search, and analytics engine.
 # brew "elasticsearch"
 
-# Logstash helps parse, enrich, transform, and buffer data from a variety of sources.
+# [Disabled] Logstash helps parse, enrich, transform, and buffer data from a variety of sources.
 # brew "logstash"
 
-# Kibana is an open source analytics and visualization platform designed to work with Elasticsearch.
+# [Disabled] Kibana is an open source analytics and visualization platform designed to work with Elasticsearch.
 # brew "kibana"
 
 ##
 # Load Testing
 ##
 
-# Modern load testing tool, using Go and JavaScript
+# [Disabled] Modern load testing tool, using Go and JavaScript
 # brew "k6"
 
-# Siege is an http load testing and benchmarking utility.
+# [Disabled] Siege is an http load testing and benchmarking utility.
 # brew "siege"
