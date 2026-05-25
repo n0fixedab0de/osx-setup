@@ -1,0 +1,1 @@
+./git/scripts/update-repos.zsh /Users/russell/repos/christies
